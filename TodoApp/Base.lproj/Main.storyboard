@@ -47,14 +47,50 @@
         <!--To Do Add-->
         <scene sceneID="jgs-NK-xzb">
             <objects>
-                <viewController id="ZHx-Li-SsJ" sceneMemberID="viewController">
+                <viewController id="ZHx-Li-SsJ" customClass="TodoSave" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vP-we-Uao">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Todo id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHB-Qz-m0V">
+                                <rect key="frame" x="50" y="213.33333333333334" width="293" height="45.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Todo name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Dx-1u-G8W">
+                                <rect key="frame" x="50" y="309" width="293" height="45.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPJ-WG-oBh">
+                                <rect key="frame" x="155.33333333333334" y="404.66666666666669" width="82.333333333333343" height="47.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="ButtonSave:" destination="ZHx-Li-SsJ" eventType="touchUpInside" id="WeY-Qu-0vy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Jaz-pY-xdO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gPJ-WG-oBh" firstAttribute="top" secondItem="1Dx-1u-G8W" secondAttribute="bottom" constant="50" id="5FG-kB-ptv"/>
+                            <constraint firstItem="Jaz-pY-xdO" firstAttribute="trailing" secondItem="IHB-Qz-m0V" secondAttribute="trailing" constant="50" id="7ia-Ue-pQJ"/>
+                            <constraint firstItem="1Dx-1u-G8W" firstAttribute="top" secondItem="IHB-Qz-m0V" secondAttribute="bottom" constant="50" id="CL5-MY-c7W"/>
+                            <constraint firstItem="gPJ-WG-oBh" firstAttribute="centerX" secondItem="0vP-we-Uao" secondAttribute="centerX" id="DJ9-oG-PAo"/>
+                            <constraint firstItem="Jaz-pY-xdO" firstAttribute="trailing" secondItem="1Dx-1u-G8W" secondAttribute="trailing" constant="50" id="K17-7I-vcf"/>
+                            <constraint firstItem="IHB-Qz-m0V" firstAttribute="top" secondItem="Jaz-pY-xdO" secondAttribute="top" constant="50" id="PPP-Ec-Mc4"/>
+                            <constraint firstItem="IHB-Qz-m0V" firstAttribute="leading" secondItem="Jaz-pY-xdO" secondAttribute="leading" constant="50" id="Szk-Xg-sm0"/>
+                            <constraint firstItem="1Dx-1u-G8W" firstAttribute="leading" secondItem="Jaz-pY-xdO" secondAttribute="leading" constant="50" id="gVk-KL-Les"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To Do Add" id="qUq-JB-BKW"/>
+                    <connections>
+                        <outlet property="tfToDoId" destination="IHB-Qz-m0V" id="hoS-0h-KmF"/>
+                        <outlet property="tfToDoName" destination="1Dx-1u-G8W" id="SMx-EV-U8Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXw-Wq-bqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,31 +104,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKN-D0-Qdg">
-                                <rect key="frame" x="50" y="213.33333333333334" width="293" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdr-l7-Wzm">
-                                <rect key="frame" x="50" y="284.33333333333331" width="293" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Todo id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RlQ-7C-lrc">
+                                <rect key="frame" x="50" y="213.33333333333334" width="293" height="45.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Todo name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYK-MU-HMY">
+                                <rect key="frame" x="50" y="309" width="293" height="45.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNw-Yi-cLL">
+                                <rect key="frame" x="113" y="442" width="121" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Update">
+                                    <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonUpdate:" destination="Dyc-tp-9cJ" eventType="touchUpInside" id="Vxg-nf-P17"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fgv-bs-QQT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fgv-bs-QQT" firstAttribute="trailing" secondItem="Cdr-l7-Wzm" secondAttribute="trailing" constant="50" id="6t6-o2-4Cd"/>
-                            <constraint firstItem="YKN-D0-Qdg" firstAttribute="top" secondItem="fgv-bs-QQT" secondAttribute="top" constant="50" id="KvQ-9O-o83"/>
-                            <constraint firstItem="YKN-D0-Qdg" firstAttribute="leading" secondItem="fgv-bs-QQT" secondAttribute="leading" constant="50" id="Pmm-gA-uAE"/>
-                            <constraint firstItem="Cdr-l7-Wzm" firstAttribute="top" secondItem="YKN-D0-Qdg" secondAttribute="bottom" constant="50" id="ZtP-6K-VGw"/>
-                            <constraint firstItem="fgv-bs-QQT" firstAttribute="trailing" secondItem="YKN-D0-Qdg" secondAttribute="trailing" constant="50" id="ejr-Yr-E5J"/>
-                            <constraint firstItem="Cdr-l7-Wzm" firstAttribute="leading" secondItem="fgv-bs-QQT" secondAttribute="leading" constant="50" id="o6e-R7-BXK"/>
+                            <constraint firstItem="fgv-bs-QQT" firstAttribute="trailing" secondItem="RlQ-7C-lrc" secondAttribute="trailing" constant="50" id="1vw-oj-fcJ"/>
+                            <constraint firstItem="fgv-bs-QQT" firstAttribute="trailing" secondItem="QYK-MU-HMY" secondAttribute="trailing" constant="50" id="6fJ-1b-roY"/>
+                            <constraint firstItem="RlQ-7C-lrc" firstAttribute="leading" secondItem="fgv-bs-QQT" secondAttribute="leading" constant="50" id="CRf-NL-mgV"/>
+                            <constraint firstItem="RlQ-7C-lrc" firstAttribute="top" secondItem="fgv-bs-QQT" secondAttribute="top" constant="50" id="Fzh-p3-DCi"/>
+                            <constraint firstItem="QYK-MU-HMY" firstAttribute="top" secondItem="RlQ-7C-lrc" secondAttribute="bottom" constant="50" id="Jej-rI-VFq"/>
+                            <constraint firstItem="QYK-MU-HMY" firstAttribute="leading" secondItem="fgv-bs-QQT" secondAttribute="leading" constant="50" id="fLd-UX-MI0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To Do Detail" id="taa-JB-It3"/>
+                    <connections>
+                        <outlet property="tfToDoId" destination="RlQ-7C-lrc" id="qNZ-ga-OOM"/>
+                        <outlet property="tfToDoName" destination="QYK-MU-HMY" id="YFl-jG-BRo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBv-PI-dql" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
