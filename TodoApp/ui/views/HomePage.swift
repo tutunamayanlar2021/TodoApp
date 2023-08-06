@@ -10,6 +10,12 @@ import UIKit
 class HomePage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var todosList:[Todo] = [
+          Todo(todo_id: 1, todo_name: "Kader"),
+          Todo(todo_id: 1, todo_name: "Deniz"),
+          Todo(todo_id: 1, todo_name: "Derya")
+        ]
         // Do any additional setup after loading the view.
     }
     @IBAction func buttonDetailAct(_ sender: Any) {

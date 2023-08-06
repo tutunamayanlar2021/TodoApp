@@ -30,8 +30,8 @@ class TodoDetail: UIViewController {
     }
 
     @IBAction func buttonUpdate(_ sender: Any) {
-        if let tId=tfToDoId.text,let tName=tfToDoName, let td=todo{
-            update(todo_id: td.todo_id! , todo_name: td.todo_name!)
+        if let tId=tfToDoId.text,let tName=tfToDoName.text, let td=todo{
+            update(todo_id: td.todo_id! , todo_name: tName)
         }
     }
     
