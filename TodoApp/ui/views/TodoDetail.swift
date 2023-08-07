@@ -9,9 +9,8 @@ import UIKit
 
 class TodoDetail: UIViewController {
     
-    @IBOutlet weak var tfToDoId: UITextField!
-    
     @IBOutlet weak var tfToDoName: UITextField!
+    
     
     
     var todo:Todo?
@@ -19,19 +18,18 @@ class TodoDetail: UIViewController {
         super.viewDidLoad()
         
         if let td = todo{
-            tfToDoId.text = td.todo_id?.formatted()
             tfToDoName.text = td.todo_name
         }
         
     }
     
-    func update(todo_id:Int, todo_name:String){
-        print("Todo Update: \(todo_id) - \(todo_name)")
+    func update(todo_id:Int, todo_time:String?, todo_name:String){
+        print("Todo Update: \(todo_time) - \(todo_name)")
     }
 
     @IBAction func buttonUpdate(_ sender: Any) {
-        if let tId=tfToDoId.text,let tName=tfToDoName.text, let td=todo{
-            update(todo_id: td.todo_id! , todo_name: tName)
+        if let tName=tfToDoName.text,  let td=todo{
+            update(todo_id: td.todo_id! ,todo_time:Date().displayFormat, todo_name: tName )
         }
     }
     

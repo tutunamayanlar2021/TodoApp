@@ -9,8 +9,8 @@ import UIKit
 
 class TodoSave: UIViewController {
 
-    @IBOutlet weak var tfToDoId: UITextField!
-    @IBOutlet weak var tfToDoName: UITextField!
+    @IBOutlet weak var tfTodoName: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,13 +19,13 @@ class TodoSave: UIViewController {
     
 
     @IBAction func ButtonSave(_ sender: Any) {
-        if let tdId = tfToDoId.text, let tdName = tfToDoName.text{
-            save(todo_id: Int(tdId)!, todo_name: tdName)
+        if let tdName = tfTodoName.text,var tdTime = Date().displayFormat{
+            save( todo_name: tdName,todo_time: tdTime)
         }
     }
     
-    func save(todo_id:Int,todo_name:String){
-        print("Todo save: \(todo_id) - \(todo_name)")
+    func save(todo_name:String,todo_time: String){
+        print("Todo save: \(todo_name)-\(todo_time) ")
     }
     
     

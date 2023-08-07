@@ -12,10 +12,14 @@ class HomePage: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var toDosTableView: UITableView!
+   
+    let creationDate = Date()
+
     var todosList:[Todo] = [
-      Todo(todo_id: 1, todo_name: "Kader"),
-      Todo(todo_id: 2, todo_name: "Deniz"),
-      Todo(todo_id: 3, todo_name: "Derya")
+        Todo(todo_id: 1, todo_name: "Do homework",creationDate: Date().displayFormat),
+      Todo(todo_id: 2, todo_name: "Go shopping",creationDate: Date().displayFormat),
+      Todo(todo_id: 3, todo_name: "Complete task",creationDate: Date().displayFormat)
+     
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +58,8 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let todo = todosList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell") as! TodoCell
-        cell.labelTodoId.text = todo.todo_id?.formatted()
         cell.labelTodoName.text = todo.todo_name
+        cell.labelTodoDate.text = todo.creationDate?.description
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -72,7 +76,7 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource{
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){contextual,view,bool in
             let todo = self.todosList[indexPath.row]
             
-            let alert = UIAlertController(title: "delete process", message: "Delete to-do named \(todo.todo_name!)?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "delete process", message: "Delete  \(todo.todo_name!)?", preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             alert.addAction(cancelAction)
@@ -91,3 +95,17 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource{
     
 }
 
+//MARK: - Date
+
+extension Date {
+    var displayFormat: String? {
+        self.formatted(
+            .dateTime
+                .year(.twoDigits)
+                .month()
+                .day(.twoDigits)
+                .hour(.conversationalTwoDigits(amPM: .omitted))
+                .minute()
+        )
+    }
+}
