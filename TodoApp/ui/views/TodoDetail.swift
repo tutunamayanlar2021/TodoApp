@@ -24,7 +24,7 @@ class TodoDetail: UIViewController {
     }
     
     func update(todo_id:Int, todo_time:String?, todo_name:String){
-        print("Todo Update: \(todo_time) - \(todo_name)")
+        print("Todo Update: \(todo_time!) - \(todo_name)")
     }
 
     @IBAction func buttonUpdate(_ sender: Any) {
