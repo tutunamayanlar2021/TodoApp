@@ -16,18 +16,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp1-Ye-nnZ">
-                                <rect key="frame" x="162" y="446" width="69" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Detay"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="f0A-pd-OOM">
+                                <rect key="frame" x="0.0" y="155" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="buttonDetailAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wT8-BS-lUK"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0LV-ue-01L"/>
                                 </connections>
-                            </button>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="k70-c4-UAc">
+                                <rect key="frame" x="0.0" y="211" width="393" height="607"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="todoCell" id="7JE-xu-YO3" customClass="TodoCell" customModule="TodoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7JE-xu-YO3" id="Llh-la-yRf">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-aO-L7r">
+                                                    <rect key="frame" x="36" y="15" width="59" height="70"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2h-9k-ux2">
+                                                            <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUb-nm-dsP">
+                                                            <rect key="frame" x="0.0" y="46" width="59" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5Mh-aO-L7r" firstAttribute="centerY" secondItem="Llh-la-yRf" secondAttribute="centerY" id="rMc-L8-815"/>
+                                                <constraint firstItem="5Mh-aO-L7r" firstAttribute="leading" secondItem="Llh-la-yRf" secondAttribute="leadingMargin" constant="16" id="z9c-5X-ZB7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelTodoId" destination="U2h-9k-ux2" id="nKu-Ed-bAC"/>
+                                            <outlet property="labelTodoName" destination="FUb-nm-dsP" id="Dy1-0A-wRc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k70-c4-UAc" secondAttribute="trailing" id="4jA-Cj-L7A"/>
+                            <constraint firstItem="k70-c4-UAc" firstAttribute="top" secondItem="f0A-pd-OOM" secondAttribute="bottom" id="Gw6-Sk-IHz"/>
+                            <constraint firstItem="f0A-pd-OOM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="H3A-x8-RGr"/>
+                            <constraint firstItem="f0A-pd-OOM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NHo-PD-S69"/>
+                            <constraint firstItem="k70-c4-UAc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hzT-4e-4Zp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="k70-c4-UAc" secondAttribute="bottom" id="rIK-be-Kjx"/>
+                            <constraint firstItem="f0A-pd-OOM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xTw-Ch-Wcl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To Do List" id="fxM-bE-XsG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bcs-CB-cPP">
@@ -37,6 +85,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="f0A-pd-OOM" id="Xfr-m8-Aob"/>
+                        <outlet property="toDosTableView" destination="k70-c4-UAc" id="oTZ-qS-oCI"/>
                         <segue destination="Dyc-tp-9cJ" kind="show" identifier="toDetail" id="FRA-3a-j9x"/>
                     </connections>
                 </viewController>
@@ -153,7 +203,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nE9-cm-tio" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Zn8-FS-qgC">
-                        <rect key="frame" x="0.0" y="59" width="393" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
