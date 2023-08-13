@@ -12,25 +12,28 @@ class HomePage: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var toDosTableView: UITableView!
-   
-    let creationDate = Date()
-
-    var todosList:[Todo] = [
-        Todo(todo_id: 1, todo_name: "Do homework",creationDate: Date().displayFormat),
-      Todo(todo_id: 2, todo_name: "Go shopping",creationDate: Date().displayFormat),
-      Todo(todo_id: 3, todo_name: "Complete task",creationDate: Date().displayFormat)
-     
-    ]
+    
+    var todosList = [Todo]()
+    var viewModel = HomePageViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self //searcBar'ı yetkilendiriyoruz.
         toDosTableView.delegate = self
         toDosTableView.dataSource = self
         
-      
-        // Do any additional setup after loading the view.
+        _ = viewModel.todosList.subscribe(onNext: { liste in
+            self.todosList = liste
+            self.toDosTableView.reloadData()
+            
+        })
+
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.uploadTodos()// SAYFA HER GÖRÜNDÜGÜ ZAMAN CALİSİR
     }
-  
+    
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if segue.identifier == "toDetail"{
                if let todo = sender as? Todo{
@@ -44,7 +47,7 @@ class HomePage: UIViewController {
 //MARK: - UISearchBarDelegate
 extension HomePage: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Todo ara: \(searchText)")
+        viewModel.search(searchFor: searchText)
     }
 }
 
@@ -59,7 +62,6 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource{
         let todo = todosList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell") as! TodoCell
         cell.labelTodoName.text = todo.todo_name
-        cell.labelTodoDate.text = todo.creationDate?.description
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,8 +85,7 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource{
             
             let yesAction = UIAlertAction(title: "Yes", style: .destructive){
                 action in
-                print("Delete todo: \(todo.todo_id!)")
-
+                self.viewModel.delete(todo_id: todo.todo_id!)
             }
             alert.addAction(yesAction)
             self.present(alert, animated: true)
@@ -95,17 +96,3 @@ extension HomePage: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-//MARK: - Date
-
-extension Date {
-    var displayFormat: String? {
-        self.formatted(
-            .dateTime
-                .year(.twoDigits)
-                .month()
-                .day(.twoDigits)
-                .hour(.conversationalTwoDigits(amPM: .omitted))
-                .minute()
-        )
-    }
-}

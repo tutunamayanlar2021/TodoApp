@@ -10,7 +10,7 @@ import UIKit
 class TodoSave: UIViewController {
 
     @IBOutlet weak var tfTodoName: UITextField!
-
+    var viewModel = TodoSaveViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,14 +19,12 @@ class TodoSave: UIViewController {
     
 
     @IBAction func ButtonSave(_ sender: Any) {
-        if let tdName = tfTodoName.text,var tdTime = Date().displayFormat{
-            save( todo_name: tdName,todo_time: tdTime)
+        if let tdName = tfTodoName.text{
+            viewModel.save( todo_name: tdName)
         }
     }
     
-    func save(todo_name:String,todo_time: String){
-        print("Todo save: \(todo_name)-\(todo_time) ")
-    }
+   
     
     
 }
