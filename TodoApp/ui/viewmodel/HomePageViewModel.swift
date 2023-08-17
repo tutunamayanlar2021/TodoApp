@@ -13,6 +13,7 @@ class HomePageViewModel{
     var todosList = BehaviorSubject<[Todo]>(value: [Todo]())
     
     init(){
+        copyDatabase()
         todosList = trepo.todosList
     }
     
@@ -29,5 +30,25 @@ class HomePageViewModel{
     {
         trepo.uploadTodos()
         
+    }
+    
+    func copyDatabase(){
+        let bundlePath = Bundle.main.path(forResource: "todo", ofType: ".sqlite")// todo.sqlite'a erişim sağlıyoruz
+        
+        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! // simülator üzerinde oluşturcağımız dosyanın yolunu oluşturacağız
+        
+        let dbURL = URL(fileURLWithPath: filePath).appendingPathComponent("todo.sqlite")//ismiyle erişeceğimiz dosya urlsi
+        
+        let fm = FileManager.default
+        
+        if fm.fileExists(atPath: dbURL.path()){
+            print("db already exist.")
+        }else{
+            do{
+                try fm.copyItem(atPath: bundlePath!, toPath: dbURL.path)
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
     }
 }
